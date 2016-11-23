@@ -1,4 +1,5 @@
-require 'puppet/provider/iispowershell'
+#require 'puppet/provider/iispowershell'
+require File.dirname(__FILE__) + ' /../iispowershell.rb'
 require 'json'
 
 Puppet::Type.type(:iis_pool).provide(:powershell, parent: Puppet::Provider::Iispowershell) do
