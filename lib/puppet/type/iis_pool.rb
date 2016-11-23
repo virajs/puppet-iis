@@ -40,10 +40,14 @@ Puppet::Type.newtype(:iis_pool) do
   newproperty(:runtime) do
     desc '.NET runtime version for the pool'
     validate do |value|
-      raise("#{runtime} must be a float") unless value =~ %r{^v?\d+\.\d+$}
+      raise("#{runtime} must be a float or empty") unless value =~ %r{^v?\d+\.\d+$|^$}
     end
     munge do |value|
-      "v#{value.gsub(%r{^v}, '').to_f}"
+      if(value.nil? || value.empty?)
+        ""
+      else
+        "v#{value.gsub(%r{^v}, '').to_f}"
+      end
     end
   end
 

@@ -108,7 +108,7 @@ iis_pool { 'DefaultAppPool':
 
 * `pipeline` The managed pipeline mode for the pool {'Classic', 'Integrated'}.
 
-* `runtime` Version of .NET runtime for the pool (float).
+* `runtime` Version of .NET runtime for the pool (float or empty).
 
 * `state` Whether the site should be `Started` or `Stopped`.  Default: `Started`
 
