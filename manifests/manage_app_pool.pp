@@ -166,7 +166,7 @@ define iis::manage_app_pool (
     }
 
     exec { "Framework-${app_pool_name}":
-      command   => "Import-Module WebAdministration; Set-ItemProperty \"IIS:\\AppPools\\${app_pool_name}\" managedRuntimeVersion ${managed_runtime_version}",
+      command   => "Import-Module WebAdministration; Set-ItemProperty \"IIS:\\AppPools\\${app_pool_name}\" managedRuntimeVersion \"${managed_runtime_version}\"",
       provider  => powershell,
       onlyif    => "Import-Module WebAdministration; if((Get-ItemProperty \"IIS:\\AppPools\\${app_pool_name}\" managedRuntimeVersion).Value.CompareTo('${managed_runtime_version}') -eq 0) { exit 1 } else { exit 0 }",
       require   => Exec["Create-${app_pool_name}"],
